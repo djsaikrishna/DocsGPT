@@ -58,7 +58,8 @@ export default function Prompts({
       }
       setModalState('INACTIVE');
       onSelectPrompt(newPromptName, newPrompt.id, newPromptContent);
-      setNewPromptName(newPromptName);
+      setNewPromptName('');
+      setNewPromptContent('');
     } catch (error) {
       console.error(error);
     }
@@ -167,7 +168,7 @@ export default function Prompts({
             />
           </div>
           <button
-            className="mt-[24px] rounded-3xl border border-solid border-purple-30 px-5 py-3 text-purple-30 hover:bg-purple-30 hover:text-white"
+            className="mt-[24px] rounded-3xl border border-solid border-purple-700 px-5 py-3 text-purple-700 transition-colors hover:bg-purple-700 hover:text-white dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-400 dark:hover:text-white"
             onClick={() => {
               setModalType('ADD');
               setModalState('ACTIVE');
@@ -178,6 +179,7 @@ export default function Prompts({
         </div>
       </div>
       <PromptsModal
+        existingPrompts={prompts}
         type={modalType}
         modalState={modalState}
         setModalState={setModalState}
